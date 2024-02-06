@@ -14,26 +14,21 @@
         <div>
             <h1>Sign Up Form</h1>
         </div>
-        <form action="{% url "save_signup_info" %}" method="post">
+        <form action="/signup/" method="POST">
             {% csrf_token %}
-            <div class="top-row">
-                <div class="field-wrap">
-                    <input type="text" required placeholder="First Name" />
-                </div>
-                <div class="field-wrap">
-                    <input type="text" required placeholder="Last Name" />
-                </div>
+            <div class="field-wrap">
+                <input type="text" required placeholder="Username" name="username"/>
             </div>
             <div class="field-wrap">
-                <input type="email" required placeholder="Email Address" />
+                <input type="password" required placeholder="Password" name="password1"/>
             </div>
             <div class="field-wrap">
-                <input type="password" required placeholder="Set A Password" />
+                <input type="password" required placeholder="Confirm Password" name="password2"/>
             </div>
             <div class="field-wrap">
                 <p>Already have an account <a href="{% url "login" %}">Login</a></p>
             </div>
-            <button type="submit" class="button button-block">Sign Up</button>
+            <input class="button" type="submit" value="Sign Up">
         </form>
     </div>
 </body>

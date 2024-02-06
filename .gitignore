@@ -7,3 +7,6 @@ db.sqlite3
 
 # environment
 .env
+
+# files
+admin_account.txt

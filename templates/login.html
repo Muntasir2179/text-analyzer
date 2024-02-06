@@ -14,18 +14,18 @@
         <div>
             <h1>Login Form</h1>
         </div>
-        <form action="{% url "login_success" %}" method="post">
+        <form action="/login/" method="POST">
             {% csrf_token %}
             <div class="field-wrap">
-                <input type="email" required placeholder="Email Address" />
+                <input type="text" required placeholder="Email Address" name="username"/>
             </div>
             <div class="field-wrap">
-                <input type="password" required placeholder="Password" />
+                <input type="password" required placeholder="Password" name="password"/>
             </div>
             <div class="field-wrap">
                 <p>Not have an account <a href="{% url "signup" %}">Sign Up</a></p>
             </div>
-            <button class="button button-block">Log In</button>
+            <input class="button" type="submit" value="Login">
         </form>
     </div>
 </body>
