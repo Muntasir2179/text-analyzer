@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/login.css" %}">
+    <title>Login Page</title>
+</head>
+
+<body>
+    <div class="form">
+        <div>
+            <h1>Login Form</h1>
+        </div>
+        <form action="{% url "login_success" %}" method="post">
+            {% csrf_token %}
+            <div class="field-wrap">
+                <input type="email" required placeholder="Email Address" />
+            </div>
+            <div class="field-wrap">
+                <input type="password" required placeholder="Password" />
+            </div>
+            <button class="button button-block">Log In</button>
+        </form>
+    </div>
+</body>
+
+</html>
