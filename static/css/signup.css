@@ -56,6 +56,16 @@ textarea {
     padding: 5px 5px;
 }
 
+.field-wrap p {
+    text-decoration: none;
+    text-align: center;
+    color: white;
+}
+
+.field-wrap p a {
+    color: chocolate;
+}
+
 .top-row:after {
     content: "";
     display: table;

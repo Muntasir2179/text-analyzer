@@ -55,12 +55,22 @@ textarea {
     margin-bottom: 40px;
 }
 
+.field-wrap p {
+    text-decoration: none;
+    text-align: center;
+    color: white;
+}
+
+.field-wrap p a {
+    color: chocolate;
+}
+
 .button {
     border: 0;
     outline: none;
     border-radius: 0;
-    padding: 15px 0;
-    font-size: 2rem;
+    padding: 5px 0;
+    font-size: 1.5rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: .1em;
