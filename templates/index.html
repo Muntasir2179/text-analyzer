@@ -1,0 +1,47 @@
+{% extends "includes/nav_footer.html" %}
+{% load static %}
+
+
+{% block styles %}
+<link rel="stylesheet" href="{% static "css/index.css" %}">
+{% endblock styles %}
+
+{% block title %}
+<title>Dashboard Page</title>
+{% endblock title %}
+
+{% block content %}
+<div class="dashboard">
+    <div class="dashboard-info">
+        <h1>Applications of Vector Database</h1>
+        <hr>
+        <p>Explore the following options to enhance your experience with vector database. We have tried to
+            develop a demo that how can a state of the art model can be used to generate learnable embeddings and
+            how can we store those embeddings and use it to develop scalable AI applications.
+        </p>
+    </div>
+    <div class="options-container">
+        <a class="option" href="{% url "text_analyze" %}">
+            <div>
+                <h3>Text Analyzer</h3>
+                <hr>
+                <p>Upload your texts and analyze the <br> information in a chatting way.</p>
+            </div>
+        </a>
+        <a class="option" href="">
+            <div>
+                <h3>Play with Image</h3>
+                <hr>
+                <p>Upload your images and retrieve similar <br> images with text prompts.</p>
+            </div>
+        </a>
+        <a class="option" href="">
+            <div>
+                <h3>Play with Video</h3>
+                <hr>
+                <p>This option enables you to search <br> videos using text prompts.</p>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock content %}

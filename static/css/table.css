@@ -1,0 +1,48 @@
+nav {
+    width: 100%;
+}
+
+a {
+    font-weight: bold;
+}
+
+.navbar .container-fluid a {
+    font-size: 25px;
+    padding-left: 20px;
+}
+
+.navbar .container-fluid .navbar-collapse a {
+    font-weight: normal;
+    font-size: 20px;
+}
+
+main {
+    padding-inline: 32px;
+}
+
+.history-wrapper {
+    padding: 20px;
+}
+
+.history-wrapper h1 {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    font-weight: 600;
+}
+
+.history-wrapper hr {
+    width: 70%;
+    padding: 1px;
+    margin-bottom: 50px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    right: 0;
+    bottom: 0;
+}

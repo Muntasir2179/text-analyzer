@@ -1,0 +1,46 @@
+{% extends "includes/nav_footer.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static "css/chat.css" %}">
+{% endblock styles %}
+
+{% block title %}
+<title>Query Page</title>
+{% endblock title %}
+
+{% block content %}
+<div class="upload-form">
+    <h2>Submit Your Query Text</h2>
+    <form action="#" method="post">
+        <div class="file-input-container">
+            <textarea class="form-control" name="query" id="query" cols="35" rows="3"
+                placeholder="Any prompt related to your uploaded texts..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark">Submit Query</button>
+    </form>
+
+    <div class="query-result" id="query-result">
+    </div>
+    <div class="result-container" id="result-container"></div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    document.querySelector('.upload-form form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const queryInput = document.getElementById('query');
+        const resultContainer = document.getElementById('result-container');
+        const queryResult = document.getElementById('query-result');
+
+        if (queryInput.value.trim() !== '') {
+            queryResult.innerHTML = `<h2>Response to the Query</h2>`;
+            resultContainer.innerHTML = `<p>${queryInput.value}</p>`;
+            queryInput.value = '';
+            resultContainer.style.display = 'block';
+        }
+    });
+</script>
+{% endblock scripts %}
