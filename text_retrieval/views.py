@@ -4,6 +4,9 @@ from django.contrib.auth import authenticate, login as loginUser, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
+from dashboard.settings import BASE_DIR
+import os
+
 
 # Create your views here.
 
@@ -13,7 +16,19 @@ def index(request):
 
 @login_required(login_url='login')
 def text_analyze(request):
-    return render(request=request, template_name='text_analyze.html', context={'current_user': request.user})
+    if request.method == 'POST':
+        uploaded_files = request.FILES.getlist('files')
+        for uploaded_file in uploaded_files:
+            if uploaded_file.content_type == 'text/plain':  # Check if the file is a text file
+                # Save the file to the 'uploads/' folder
+                with open(f'uploads/{uploaded_file.name}', 'wb') as destination:
+                    for chunk in uploaded_file.chunks():
+                        destination.write(chunk)
+                destination.close()
+            
+        return render(request=request, template_name='chat.html', context={'current_user': request.user})
+    else:
+        return render(request=request, template_name='text_analyze.html', context={'current_user': request.user})
 
 @login_required(login_url='login')
 def chat(request):
@@ -90,6 +105,11 @@ def signup_function(request):
             return render(request=request, template_name='signup.html', context=context)
         
 def logout_function(request):
+    # listing all the files in 'uploads' folder and deleting those uploaded files
+    file_list = os.listdir(BASE_DIR / 'uploads')
+    if len(file_list) != 0:
+        for file_name in file_list:
+            os.remove(os.path.join(BASE_DIR / 'uploads', file_name))
     logout(request=request)
     return redirect('login')
 
