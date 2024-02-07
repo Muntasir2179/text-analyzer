@@ -24,6 +24,11 @@ a {
     font-size: 20px;
 }
 
+.navbar .container-fluid .navbar-collapse .nav-item span {
+    font-size: 18px;
+    margin: 8px 10px 0px 10px;
+}
+
 .upload-form {
     text-align: center;
     margin-top: 50px;
@@ -43,6 +48,10 @@ form {
     background-color: rgb(90, 107, 117);
     border-radius: 10px;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+
+.upload-form #file-names {
+    color: white;
 }
 
 label {

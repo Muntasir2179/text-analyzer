@@ -16,6 +16,11 @@ a {
     font-size: 20px;
 }
 
+.navbar .container-fluid .navbar-collapse .nav-item span {
+    font-size: 18px;
+    margin: 8px 10px 0px 10px;
+}
+
 main {
     padding-inline: 32px;
 }

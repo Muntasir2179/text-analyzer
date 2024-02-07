@@ -27,6 +27,9 @@
                 <ul class="navbar-nav ms-auto flex-nowrap">
                     {% if request.user.is_authenticated %}
                     <li class="nav-item">
+                        <span class="badge rounded-pill bg-info text-dark">Welcome {{current_user}}</span>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/logout">Logout</a>
                     </li>
                     {% else %}

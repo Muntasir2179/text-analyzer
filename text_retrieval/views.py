@@ -9,24 +9,25 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='login')
 def index(request):
-    if request.user.is_authenticated:
-        return render(request, 'index.html')
-    return render(request, 'index.html')
+    return render(request=request, template_name='index.html', context={'current_user': request.user})
 
 @login_required(login_url='login')
 def text_analyze(request):
-    return render(request=request, template_name='text_analyze.html')
+    return render(request=request, template_name='text_analyze.html', context={'current_user': request.user})
 
 @login_required(login_url='login')
 def chat(request):
-    return render(request=request, template_name='chat.html')
+    return render(request=request, template_name='chat.html', context={'current_user': request.user})
 
 @login_required(login_url='login')
 def response_history(request):
-    return render(request=request, template_name='table.html')
+    return render(request=request, template_name='table.html', context={'current_user': request.user})
 
 def login_function(request):
     if request.method == 'GET':
+        # if authenticated user tries to access the login url again then redirect to home page
+        if request.user.is_authenticated:
+            return redirect('index')
         form = AuthenticationForm()
         context = {
             "form": form
@@ -59,6 +60,9 @@ def login_function(request):
 
 def signup_function(request):
     if request.method == 'GET':
+        # if authenticated user tries to access the signup url again then redirect to home page
+        if request.user.is_authenticated:
+            return redirect('index')
         form = UserCreationForm()
         context = {
             'form': form
