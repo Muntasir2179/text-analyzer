@@ -20,7 +20,7 @@ vector_store = None
 collection_name = os.getenv('TEXT_COLLECTION_NAME')  # getting the collection name from the environment
 
 # function for creating a collection
-def create_collection():
+def create_text_collection():
     collection_list = client.get_collections()
     if len(collection_list.collections) == 0:  # when there is no collection created before
         client.create_collection(
@@ -34,7 +34,8 @@ def create_collection():
 def delete_collection():
     collection_list = client.get_collections()
     if len(collection_list.collections) != 0:  # when there is already a collection exists
-        client.delete_collection(collection_name=collection_name)
+        for i in range(len(collection_list.collections)):
+            client.delete_collection(collection_name=collection_list.collections[i].name)
 
 
 # function for inserting user documents into the collection

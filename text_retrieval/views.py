@@ -9,14 +9,14 @@ from dashboard.settings import BASE_DIR
 import os
 
 # vector database packaged
-from .qdrant_operations import create_collection, delete_collection, insert_documents
+from .qdrant_operations import create_text_collection, delete_collection, insert_documents
 
 
 # Create your views here.
 
 @login_required(login_url='login')
 def index(request):
-    create_collection()  # creating a collection for the authenticated user
+    create_text_collection()  # creating a collection for the authenticated user
     return render(request=request, template_name='index.html', context={'current_user': request.user})
 
 @login_required(login_url='login')
