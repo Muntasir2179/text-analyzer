@@ -4,16 +4,19 @@ from django.contrib.auth import authenticate, login as loginUser, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
+# for accessing paths
 from dashboard.settings import BASE_DIR
 import os
 
-from .embedding_model import VectorDatabase
+# vector database packaged
+from .qdrant_operations import create_collection, delete_collection, insert_documents
 
 
 # Create your views here.
 
 @login_required(login_url='login')
 def index(request):
+    create_collection()  # creating a collection for the authenticated user
     return render(request=request, template_name='index.html', context={'current_user': request.user})
 
 @login_required(login_url='login')
@@ -27,7 +30,6 @@ def text_analyze(request):
                     for chunk in uploaded_file.chunks():
                         destination.write(chunk)
                 destination.close()
-            
         return render(request=request, template_name='chat.html', context={'current_user': request.user})
     else:
         return render(request=request, template_name='text_analyze.html', context={'current_user': request.user})
@@ -112,6 +114,8 @@ def logout_function(request):
     if len(file_list) != 0:
         for file_name in file_list:
             os.remove(os.path.join(BASE_DIR / 'uploads', file_name))
+    
+    delete_collection()  # deleting the collection that we have created when user logged in
     logout(request=request)
     return redirect('login')
 

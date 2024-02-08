@@ -1,14 +1,4 @@
-# vector database packages
-import torch
-import qdrant_client
 from langchain.embeddings.huggingface import HuggingFaceEmbeddings
-from sentence_transformers import SentenceTransformer
-from langchain.vectorstores.qdrant import Qdrant
-
-# for accessing environment variables
-import os
-from dotenv import load_dotenv
-load_dotenv()
 
 class VectorDatabase:
     _embedding_model = None
