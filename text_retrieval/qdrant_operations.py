@@ -17,7 +17,7 @@ client = qdrant_client.QdrantClient(
 
 # creating a vector store object
 vector_store = None
-collection_name = 'collection'
+collection_name = os.getenv('TEXT_COLLECTION_NAME')  # getting the collection name from the environment
 
 # function for creating a collection
 def create_collection():
