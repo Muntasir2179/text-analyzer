@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from dashboard.settings import BASE_DIR
 import os
 
+from .embedding_model import VectorDatabase
+
 
 # Create your views here.
 
