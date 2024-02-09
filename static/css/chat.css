@@ -96,6 +96,11 @@ button:hover {
     background-color: #555;
 }
 
+.response-container {
+    margin-top: 40px;
+    margin-bottom: 200px;
+}
+
 .result-container {
     font-size: 20px;
     position: relative;
@@ -104,11 +109,14 @@ button:hover {
     color: #000;
     width: 100%;
     display: none;
-    margin-top: 40px;
-    margin-bottom: 200px;
     padding: 20px 20px;
+    margin-bottom: 20px;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 5px;
+}
+
+.result-container.show-box {
+    display: block;
 }
 
 .query-result h2 {
@@ -118,6 +126,7 @@ button:hover {
     width: 40%;
     padding: 0;
     margin-top: 50px;
+    margin-bottom: 30px;
     font-size: 40px;
 }
 
