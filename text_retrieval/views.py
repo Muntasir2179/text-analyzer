@@ -9,14 +9,18 @@ from dashboard.settings import BASE_DIR
 import os
 
 # vector database packaged
-from .qdrant_operations import create_text_collection, delete_collection, insert_documents
+from .qdrant_operations import QdrantVectorDatabaseOperations
+from .text_processor import get_document_chunks
 
+
+# creating a QdrantVectorDatabaseOperations object for using in all the views
+vector_operations = QdrantVectorDatabaseOperations()
 
 # Create your views here.
 
 @login_required(login_url='login')
 def index(request):
-    create_text_collection()  # creating a collection for the authenticated user
+    vector_operations.create_text_collection()  # creating a collection for the authenticated user
     return render(request=request, template_name='index.html', context={'current_user': request.user})
 
 @login_required(login_url='login')
@@ -30,6 +34,12 @@ def text_analyze(request):
                     for chunk in uploaded_file.chunks():
                         destination.write(chunk)
                 destination.close()
+        
+        # if the uploads folder contains some text files then load these files and convert into smaller chunks
+        if len(os.listdir('uploads')) != 0:
+            document_chunks = get_document_chunks()
+            # inserting the chunks into the collection
+            vector_operations.insert_documents(documents=document_chunks)
         return render(request=request, template_name='chat.html', context={'current_user': request.user})
     else:
         return render(request=request, template_name='text_analyze.html', context={'current_user': request.user})
@@ -115,7 +125,8 @@ def logout_function(request):
         for file_name in file_list:
             os.remove(os.path.join(BASE_DIR / 'uploads', file_name))
     
-    delete_collection()  # deleting the collection that we have created when user logged in
+    # deleting the collection that we have created when user logged in
+    vector_operations.delete_collection()
     logout(request=request)
     return redirect('login')
 
