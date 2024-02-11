@@ -3,8 +3,17 @@
 import os
 import sys
 
+# importing base directory path
+from dashboard.settings import BASE_DIR
+
 
 def main():
+    # creating required folders folders for model and uploaded text files
+    if 'uploads' not in os.listdir(BASE_DIR):
+        os.mkdir(BASE_DIR / 'uploads')
+    if 'embedding_model' not in os.listdir(BASE_DIR):
+        os.mkdir(BASE_DIR / 'embedding_model')
+    
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dashboard.settings')
     try:
