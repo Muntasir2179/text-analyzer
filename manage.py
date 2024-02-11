@@ -15,7 +15,9 @@ def main():
         os.mkdir(BASE_DIR / 'embedding_model')
     
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dashboard.settings')
+    # switching between local and server settings based on environment variable
+    settings_module = 'dashboard.deployment' if 'WEBSITE_HOSTNAME' in os.environ else 'dashboard.settings'
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
