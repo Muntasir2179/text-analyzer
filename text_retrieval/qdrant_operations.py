@@ -11,13 +11,23 @@ load_dotenv()
 
 class QdrantVectorDatabaseOperations:
     def __init__(self):
+        # getting values from environment variables
+        if 'WEBSITE_HOSTNAME' not in os.environ:
+            host = os.getenv('QDRANT_HOST')
+            api_key = os.getenv('QDRANT_API_KEY')
+            self.collection_name = os.getenv('TEXT_COLLECTION_NAME')
+        else:
+            # when deployed in cloud
+            host = os.environ['QDRANT_HOST']
+            api_key = os.environ['QDRANT_API_KEY']
+            self.collection_name = os.environ['TEXT_COLLECTION_NAME']
+        
         # creating a qdrant client
-        self.client = client = qdrant_client.QdrantClient(
-            url=os.getenv('QDRANT_HOST'),
-            api_key=os.getenv('QDRANT_API_KEY')
-        )
-        # getting the collection name from the environment
-        self.collection_name = os.getenv('TEXT_COLLECTION_NAME')
+        self.client = qdrant_client.QdrantClient(
+            url=host,
+            api_key=api_key
+        )        
+
         # creating a vector store
         self.vector_store = Qdrant(
             client=self.client,
