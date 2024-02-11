@@ -71,7 +71,7 @@ a {
     padding: 30px;
     border-radius: 10px;
     text-align: center;
-    width: 30%;
+    width: 100%;
     margin: 20px 10px 20px 10px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
