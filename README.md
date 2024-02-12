@@ -1,5 +1,5 @@
 <div align="center">
-    <a href="https://zenml.io">
+    <a href="">
       <img alt="Banner" src="documents/banner.png" alt="banner">
     </a>
 </div>
