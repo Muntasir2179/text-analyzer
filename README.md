@@ -17,7 +17,7 @@
     </ul>
     <li><a href="#embedding-model">Embedding Model</a></li>
     <li><a href="#installation">Installation</a></li>
-    <li><a href="#-note">Note</a></li>
+    <li><a href="#note">Note</a></li>
   </ul>
 </div>
 
