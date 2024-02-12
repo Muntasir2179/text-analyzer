@@ -41,8 +41,8 @@ class QdrantVectorDatabaseOperations:
         if len(collection_list.collections) == 0:  # when there is no collection created before
             self.client.create_collection(
                 collection_name=self.collection_name,
-                vectors_config=models.VectorParams(size=768,  # embedding vector dimension
-                                                distance=models.Distance.COSINE)  # distance calculation function
+                vectors_config=models.VectorParams(size=384,  # embedding vector dimension
+                                                   distance=models.Distance.COSINE)  # distance calculation function
             )
     
     # function for deleting the collection

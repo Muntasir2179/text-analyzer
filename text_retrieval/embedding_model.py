@@ -7,7 +7,7 @@ class VectorDatabase:
     def load_model(self):
         if self._embedding_model is None:
             self._embedding_model = HuggingFaceEmbeddings(
-                model_name="sentence-transformers/all-mpnet-base-v2", 
+                model_name= "sentence-transformers/all-MiniLM-L6-v2",  # "sentence-transformers/all-mpnet-base-v2"
                 cache_folder= 'embedding_model'
             )
             print("The embedding model is loading")
