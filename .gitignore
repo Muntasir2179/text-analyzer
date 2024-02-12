@@ -4,6 +4,7 @@
 
 # environment
 .env
+.production
 
 # files
 admin_account.txt
